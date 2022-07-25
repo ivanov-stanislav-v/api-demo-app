@@ -1,17 +1,13 @@
 package eu.paze.isv.model;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class PazeResponse {
+public class PaymentResult {
 
-    private int status;
-
-    private PaymentResult result;
+    private String redirectUrl;
 }
