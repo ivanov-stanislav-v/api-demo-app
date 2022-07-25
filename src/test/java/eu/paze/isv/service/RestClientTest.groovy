@@ -1,9 +1,12 @@
-package eu.paze.isv
+package eu.paze.isv.service
 
-import eu.paze.isv.model.Currency
-import eu.paze.isv.model.PaymentType
-import eu.paze.isv.model.PazeRequest
-import eu.paze.isv.model.PazeResponse
+import eu.paze.isv.CommonSpecification
+import eu.paze.isv.service.PaymentService
+import eu.paze.isv.service.RestClient
+import eu.paze.isv.service.model.Currency
+import eu.paze.isv.service.model.PaymentType
+import eu.paze.isv.service.model.PazeRequest
+import eu.paze.isv.service.model.PazeResponse
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpEntity
 import org.springframework.http.HttpHeaders
@@ -31,28 +34,11 @@ class RestClientTest extends CommonSpecification {
                 .build()
     }
 
-    def "Success. 200 from remote server"() {
+    def "Success. 200 от удаленного сервера"() {
         when:
         def response = service.createPayment(request)
 
         then:
         response.statusCode == HttpStatus.OK
-    }
-
-    def "Failed. 401 from remote server"() {
-        setup:
-        def headers = new HttpHeaders()
-        headers.setContentType(MediaType.APPLICATION_JSON)
-        headers.setAccept(List.of(MediaType.APPLICATION_JSON))
-
-        and:
-        def httpEntity = new HttpEntity<>(request, headers)
-
-        when:
-        restClient.post(httpEntity, PazeResponse.class)
-
-        then:
-        HttpClientErrorException ex = thrown()
-        ex.message.contains('401')
     }
 }

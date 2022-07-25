@@ -1,8 +1,7 @@
-package eu.paze.isv;
+package eu.paze.isv.service;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import eu.paze.isv.model.PazeRequest;
-import eu.paze.isv.model.PazeResponse;
+import eu.paze.isv.service.model.PazeRequest;
+import eu.paze.isv.service.model.PazeResponse;
 import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -21,30 +20,12 @@ import java.util.List;
 @Validated
 public class PaymentServiceBean implements PaymentService {
 
-    @Value("${app.token:}")
-    private String bearerToken;
-
     @Autowired
     private RestClient restClient;
-
-    @Autowired
-    ObjectMapper om;
-
-    private HttpHeaders headers;
 
     @Override
     @SneakyThrows
     public ResponseEntity<PazeResponse> createPayment(@Valid PazeRequest request) {
-        HttpEntity<PazeRequest> httpEntity = new HttpEntity<>(request, headers);
-
-        return restClient.post(httpEntity, PazeResponse.class);
-    }
-
-    @PostConstruct
-    public void setHeaders() {
-        headers = new HttpHeaders();
-        headers.setContentType(MediaType.APPLICATION_JSON);
-        headers.setBearerAuth(bearerToken);
-        headers.setAccept(List.of(MediaType.APPLICATION_JSON));
+        return restClient.post(request, PazeResponse.class);
     }
 }

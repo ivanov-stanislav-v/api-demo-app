@@ -1,9 +1,12 @@
-package eu.paze.isv
+package eu.paze.isv.service
 
-import eu.paze.isv.model.Currency
-import eu.paze.isv.model.PaymentType
-import eu.paze.isv.model.PazeRequest
-import eu.paze.isv.model.PazeResponse
+import eu.paze.isv.CommonSpecification
+import eu.paze.isv.service.PaymentService
+import eu.paze.isv.service.RestClient
+import eu.paze.isv.service.model.Currency
+import eu.paze.isv.service.model.PaymentType
+import eu.paze.isv.service.model.PazeRequest
+import eu.paze.isv.service.model.PazeResponse
 import org.mockito.Mockito
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.mock.mockito.MockBean
@@ -27,7 +30,7 @@ class PaymentServiceTest extends CommonSpecification {
     }
 
     @Unroll
-    def "Success validation"() {
+    def "Success. Успешная на валидация с amount=#amount"() {
         setup:
         def request = PazeRequest.builder()
                 .amount(amount)
@@ -42,7 +45,7 @@ class PaymentServiceTest extends CommonSpecification {
         amount << [0.01, 999999.99]
     }
 
-    def "Failed validation"() {
+    def "Failed. Ломаемся на валидации с amount=#amount"() {
         setup:
         def request = PazeRequest.builder()
                 .amount(0.0)

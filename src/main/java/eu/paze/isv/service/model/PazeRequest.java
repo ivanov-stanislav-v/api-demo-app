@@ -1,4 +1,4 @@
-package eu.paze.isv.model;
+package eu.paze.isv.service.model;
 
 import lombok.Builder;
 import lombok.Data;

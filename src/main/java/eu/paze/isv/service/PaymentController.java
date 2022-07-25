@@ -1,9 +1,9 @@
-package eu.paze.isv;
+package eu.paze.isv.service;
 
-import eu.paze.isv.model.Currency;
-import eu.paze.isv.model.PaymentType;
-import eu.paze.isv.model.PazeRequest;
-import eu.paze.isv.model.PazeResponse;
+import eu.paze.isv.service.model.Currency;
+import eu.paze.isv.service.model.PaymentType;
+import eu.paze.isv.service.model.PazeRequest;
+import eu.paze.isv.service.model.PazeResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
