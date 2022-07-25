@@ -1,0 +1,40 @@
+plugins {
+    id 'java'
+    id 'idea'
+    id 'groovy'
+    id 'maven-publish'
+    id 'org.springframework.boot' version '2.3.6.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.9.RELEASE'
+}
+
+group 'eu.paze.isv'
+version '1.0-SNAPSHOT'
+
+bootJar.enabled = true
+
+sourceCompatibility = 11
+targetCompatibility = 11
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+
+    implementation "org.springframework.boot:spring-boot-starter-web"
+    implementation "org.springframework.boot:spring-boot-starter-validation"
+
+    testImplementation "org.springframework.boot:spring-boot-starter-test"
+    testImplementation 'org.codehaus.groovy:groovy:3.0.11'
+    testImplementation 'org.codehaus.groovy:groovy-dateutil:3.0.11'
+    testImplementation 'org.codehaus.groovy:groovy-json:3.0.11'
+    testImplementation 'org.spockframework:spock-core:2.1-groovy-3.0'
+    testImplementation 'org.spockframework:spock-spring:2.1-groovy-3.0'
+    testImplementation 'junit:junit:4.13.2'
+}
+
+test {
+    useJUnitPlatform()
+}

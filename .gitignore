@@ -1,0 +1,9 @@
+.idea
+.gradle
+*.iml
+**/build/
+**/out/
+logs
+work
+gradle
+gradlew
