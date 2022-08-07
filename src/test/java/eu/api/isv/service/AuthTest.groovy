@@ -19,7 +19,9 @@ class AuthTest extends CommonSpecification {
     MockMvc mockMvc
 
     private String post(String amount, ResultMatcher resStatus = status().isUnauthorized()) {
-        mockMvc.perform(MockMvcRequestBuilders.post("/payments/${amount}")
+        mockMvc.perform(MockMvcRequestBuilders.post("/payments/")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content("""{"amount":"${amount}"}""")
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(resStatus)
                 .andReturn()

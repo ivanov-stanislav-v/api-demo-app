@@ -1,16 +1,14 @@
 package eu.api.isv.service.model
 
 import com.fasterxml.jackson.databind.ObjectMapper
+import eu.api.isv.CommonSpecification
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.boot.test.context.SpringBootTest
 import spock.lang.Shared
-import spock.lang.Specification
 import spock.lang.Unroll
 
 import javax.validation.Validator
 
-@SpringBootTest
-class PazeRequestTest extends Specification {
+class PazeRequestTest extends CommonSpecification {
 
     @Shared
     PazeRequest request

@@ -48,12 +48,12 @@ class PaymentControllerTest extends CommonSpecification {
         res.contains("200")
     }
 
-    def "Failed. Некорректный amount"() {
+    def "Failed. amount не число"() {
         when:
         def res = post("amount", status().isBadRequest())
 
         then:
-        res.contains("Failed to convert value of type")
+        res.contains("JSON parse error")
     }
 
     def "Failed. Невалидный amount"() {

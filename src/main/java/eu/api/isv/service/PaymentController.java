@@ -24,12 +24,12 @@ import java.math.BigDecimal;
 public class PaymentController {
 
     @Autowired
-    private final PaymentService paymentService;
+    private RestClient restClient;
 
     @PostMapping(value = "/payments/")
     public @ResponseBody ResponseEntity<PazeResponse> createPayment(@Valid @RequestBody PazeRequest request) {
         log.info("-> createPayment: {}", request);
 
-        return paymentService.createPayment(request);
+        return restClient.post(request, PazeResponse.class);
     }
 }
