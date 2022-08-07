@@ -11,11 +11,14 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.validation.Valid;
 import java.math.BigDecimal;
 
 @Slf4j
+@Valid
 @Controller
 @RequiredArgsConstructor
 public class PaymentController {
@@ -23,16 +26,10 @@ public class PaymentController {
     @Autowired
     private final PaymentService paymentService;
 
-    @PostMapping(value = "/payments/{amount:.+}")
-    public @ResponseBody ResponseEntity<PazeResponse> createPayment(@PathVariable BigDecimal amount) {
-        log.info("-> createPayment, amount={}", amount);
+    @PostMapping(value = "/payments/")
+    public @ResponseBody ResponseEntity<PazeResponse> createPayment(@Valid @RequestBody PazeRequest request) {
+        log.info("-> createPayment: {}", request);
 
-        return paymentService.createPayment(
-                PazeRequest.builder()
-                        .amount(amount)
-                        .paymentType(PaymentType.DEPOSIT)
-                        .currency(Currency.EUR)
-                        .build()
-        );
+        return paymentService.createPayment(request);
     }
 }

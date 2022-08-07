@@ -30,7 +30,9 @@ class PaymentControllerTest extends CommonSpecification {
     }
 
     private String post(String amount, ResultMatcher resStatus = status().isOk()) {
-        mockMvc.perform(MockMvcRequestBuilders.post("/payments/${amount}")
+        mockMvc.perform(MockMvcRequestBuilders.post("/payments/")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content("""{"amount":"${amount}"}""")
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(resStatus)
                 .andReturn()
