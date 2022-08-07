@@ -13,7 +13,7 @@ import java.math.BigDecimal;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class PazeRequest {
+public class ApiRequest {
 
     @Builder.Default
     private PaymentType paymentType = PaymentType.DEPOSIT;

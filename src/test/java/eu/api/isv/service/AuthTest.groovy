@@ -8,9 +8,11 @@ import org.springframework.test.context.TestPropertySource
 import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.ResultMatcher
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders
+import spock.lang.Ignore
 
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
 
+@Ignore
 @AutoConfigureMockMvc
 @TestPropertySource(properties = "app.token=badToken")
 class AuthTest extends CommonSpecification {

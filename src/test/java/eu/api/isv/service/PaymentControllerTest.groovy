@@ -1,7 +1,7 @@
 package eu.api.isv.service
 
 import eu.api.isv.CommonSpecification
-import eu.api.isv.service.model.PazeResponse
+import eu.api.isv.service.model.ApiResponse
 import org.mockito.Mockito
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc
@@ -25,8 +25,8 @@ class PaymentControllerTest extends CommonSpecification {
     RestClient client
 
     def setup() {
-        Mockito.when(client.post(Mockito.any(), Mockito.eq(PazeResponse.class)))
-                .thenReturn(new ResponseEntity(new PazeResponse(200, null), HttpStatus.OK))
+        Mockito.when(client.post(Mockito.any(), Mockito.eq(ApiResponse.class)))
+                .thenReturn(new ResponseEntity(new ApiResponse(200, null), HttpStatus.OK))
     }
 
     private String post(String amount, ResultMatcher resStatus = status().isOk()) {

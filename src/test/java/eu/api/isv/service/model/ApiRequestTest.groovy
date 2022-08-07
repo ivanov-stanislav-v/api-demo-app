@@ -8,10 +8,10 @@ import spock.lang.Unroll
 
 import javax.validation.Validator
 
-class PazeRequestTest extends CommonSpecification {
+class ApiRequestTest extends CommonSpecification {
 
     @Shared
-    PazeRequest request
+    ApiRequest request
 
     @Autowired
     ObjectMapper mapper
@@ -22,7 +22,7 @@ class PazeRequestTest extends CommonSpecification {
     @Unroll
     def "Success. Сериализация"() {
         setup:
-        request = PazeRequest.builder()
+        request = ApiRequest.builder()
                 .amount(amount as BigDecimal)
                 .build()
 
@@ -36,7 +36,7 @@ class PazeRequestTest extends CommonSpecification {
     @Unroll
     def "Success. Десериализация"() {
         setup:
-        request = mapper.readValue(json, PazeRequest.class)
+        request = mapper.readValue(json, ApiRequest.class)
 
         expect:
         request.amount == amount
@@ -56,7 +56,7 @@ class PazeRequestTest extends CommonSpecification {
     @Unroll
     def "Success. Успешная валидация с amount=#amount"() {
         setup:
-        request = PazeRequest.builder()
+        request = ApiRequest.builder()
                 .amount(amount)
                 .build()
 
@@ -69,7 +69,7 @@ class PazeRequestTest extends CommonSpecification {
 
     def "Failed. Ломаемся на валидации с amount=#amount"() {
         setup:
-        request = PazeRequest.builder()
+        request = ApiRequest.builder()
                 .amount(amount)
                 .build()
 
