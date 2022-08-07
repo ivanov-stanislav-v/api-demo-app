@@ -1,6 +1,5 @@
-package eu.paze.isv.service;
+package eu.api.isv.service;
 
-import eu.paze.isv.service.model.PazeRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.*;

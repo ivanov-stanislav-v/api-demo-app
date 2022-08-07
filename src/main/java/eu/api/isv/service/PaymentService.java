@@ -1,7 +1,7 @@
-package eu.paze.isv.service;
+package eu.api.isv.service;
 
-import eu.paze.isv.service.model.PazeRequest;
-import eu.paze.isv.service.model.PazeResponse;
+import eu.api.isv.service.model.PazeRequest;
+import eu.api.isv.service.model.PazeResponse;
 import org.springframework.http.ResponseEntity;
 
 import javax.validation.Valid;

@@ -1,4 +1,4 @@
-package eu.paze.isv.service;
+package eu.api.isv.service;
 
 import org.springframework.http.HttpEntity;
 import org.springframework.http.ResponseEntity;

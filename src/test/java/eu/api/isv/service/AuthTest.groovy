@@ -1,6 +1,6 @@
-package eu.paze.isv.service
+package eu.api.isv.service
 
-import eu.paze.isv.CommonSpecification
+import eu.api.isv.CommonSpecification
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc
 import org.springframework.http.MediaType

@@ -1,20 +1,14 @@
-package eu.paze.isv.service;
+package eu.api.isv.service;
 
-import eu.paze.isv.service.model.PazeRequest;
-import eu.paze.isv.service.model.PazeResponse;
+import eu.api.isv.service.model.PazeRequest;
+import eu.api.isv.service.model.PazeResponse;
 import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 
-import javax.annotation.PostConstruct;
 import javax.validation.Valid;
-import java.util.List;
 
 @Service
 @Validated

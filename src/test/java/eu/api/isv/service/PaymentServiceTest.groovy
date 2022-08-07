@@ -1,12 +1,9 @@
-package eu.paze.isv.service
+package eu.api.isv.service
 
-import eu.paze.isv.CommonSpecification
-import eu.paze.isv.service.PaymentService
-import eu.paze.isv.service.RestClient
-import eu.paze.isv.service.model.Currency
-import eu.paze.isv.service.model.PaymentType
-import eu.paze.isv.service.model.PazeRequest
-import eu.paze.isv.service.model.PazeResponse
+import eu.api.isv.CommonSpecification
+import eu.api.isv.service.model.PaymentType
+import eu.api.isv.service.model.PazeRequest
+import eu.api.isv.service.model.PazeResponse
 import org.mockito.Mockito
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.mock.mockito.MockBean
@@ -35,7 +32,7 @@ class PaymentServiceTest extends CommonSpecification {
         def request = PazeRequest.builder()
                 .amount(amount)
                 .paymentType(PaymentType.DEPOSIT)
-                .currency(Currency.EUR)
+                .currency(eu.api.isv.service.model.Currency.EUR)
                 .build()
 
         expect:
@@ -50,7 +47,7 @@ class PaymentServiceTest extends CommonSpecification {
         def request = PazeRequest.builder()
                 .amount(0.0)
                 .paymentType(PaymentType.DEPOSIT)
-                .currency(Currency.EUR)
+                .currency(eu.api.isv.service.model.Currency.EUR)
                 .build()
 
         when:
